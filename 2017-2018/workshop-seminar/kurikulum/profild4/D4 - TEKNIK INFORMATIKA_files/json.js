@@ -1,0 +1,1 @@
+g_callbackIp({"ip":"114.125.197.144","country_code":"ID","country_name":"Indonesia","region_code":"","region_name":"","city":"","zip_code":"","time_zone":"","latitude":-6.175,"longitude":106.8286,"metro_code":0});
