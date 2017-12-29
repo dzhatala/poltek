@@ -5,12 +5,14 @@
 
 
 <style type="text/css">
-#clock { font-family: Arial, Helvetica, sans-serif; font-size: 1.8em; color: white; background-color: black; border: 2px solid purple; padding: 4px; }
+#clock { font-family: Arial, Helvetica, sans-serif; font-size: 1.0em; color: white; background-color: black; border: 2px solid purple; padding: 4px; }
 </style>
 <script src="./jquery.js"></script>
 <script type="text/javascript">
 //<!--
 
+var job1=0; var job2=0;var job3=0;
+var job4=0; var uts=0;var uas=0;
 function init ( )
 {
   timeDisplay = document.createTextNode ( "" );
@@ -24,6 +26,34 @@ function getServerDate(){
 function getNim(){
 	return "007";
 }
+
+function setJOB1(val ){
+	job1=val;
+	$("#job1").val(val);
+}
+
+function setJOB2(val ){
+	job2=val;
+	$("#job2").val(val);
+}
+function setJOB3(val ){
+	job3=val;
+	$("#job3").val(val);
+}
+function setJOB4(val ){
+	job4=val;
+	$("#job4").val(val);
+}
+function setUTS(val ){
+	uts=val;
+	$("#uts").val(val);
+}
+function setUAS(val ){
+	uas=val;
+	$("#uas").val(val);
+}
+
+
 
 function updateClock ( )
 {
@@ -56,13 +86,34 @@ function updateClock ( )
   // Update the time display
   //document.getElementById("clock").firstChild.nodeValue = currentTimeString;
   $("#clock").html(currentTimeString);
+  //$("#job1").val(currentTimeString);
 }
 
+
+function renderAngka(){
+	var s_angka=
+	$("#angka").html("");
+}
+
+function renderValues(){
+	setJOB1(job1);
+	setJOB2(job2);
+	setJOB3(job3);
+	setJOB4(job4);
+	setUTS(uts);
+	setUAS(uas);
+	//renderAngka();
+}
+
+function renderNIM(){
+ $("#nim").html("007");
+ 
+}
 // -->
 </script>
 
 </head>
-<body onload="updateClock(); setInterval('updateClock()', 1000 )">
+<body onload="updateClock(); setInterval('updateClock()', 1000 ) ;renderNIM();renderValues() ">
 
 <div style="clear: both;"> </div>
 
@@ -72,19 +123,18 @@ function updateClock ( )
   <span id="clock">&nbsp;</span>
 </div>
 
-<h1>Nilai 'Mata Kuliah' <br><br>
-NIM : 007
-HASIL <BR>
-JOB1 : 007<br>
-JOB2 : 007<br>
-JOB3 : 007<br>
-UTS : 007<br>
-JOB4 : 007<br>
-UAS : 007<br>
+<h1>Nilai 'Mata Kuliah' </h1>
+NIM : <span id="nim"> </span><br><br>
+JOB1 : <input id="job1" name="job1" type="text" size="5"></input>
+JOB2 : <input id="job2" name="job2" type="text" size="5"></input>
+JOB3 : <input id="job3" name="job3" type="text" size="5"></input><br>
+UTS : <input id="uts" name="uts" type="text" size="5"></input>
+JOB4 : <input id="job4" name="job4" type="text" size="5"></input>
+UAS : <input id="uas" name="uas" type="text" size="5"></input><br>
+
+Total angka <br> 10%x(JOB1+JOB2+JOB3+JOB4)+25%xUTS+35%xUAS = <span id="angka"> </span><br><br>
 
 
-
-</h1>
 
 </body>
 </html>
