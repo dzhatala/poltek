@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<title>Nilai NOS</title>
+<title>Nilai</title>
 
 
 <style type="text/css">
@@ -17,14 +17,26 @@ function init ( )
   document.getElementById("clock").appendChild ( timeDisplay );
 }
 
+function getServerDate(){
+		return "Jum Des 29 08:50:18"
+}
+
+function getNim(){
+	return "007";
+}
+
 function updateClock ( )
 {
-  var currentTime = new Date ( ); /*replace here with server version but don't get */
+
+  var currentTime = new Date ( );
 
   var currentHours = currentTime.getHours ( );
   var currentMinutes = currentTime.getMinutes ( );
   var currentSeconds = currentTime.getSeconds ( );
-
+	
+  var currDay = currentTime.getDate();
+  var currMonth = currentTime.getMonth();
+  var currYear  =currentTime.getFullYear();
   // Pad the minutes and seconds with leading zeros, if required
   currentMinutes = ( currentMinutes < 10 ? "0" : "" ) + currentMinutes;
   currentSeconds = ( currentSeconds < 10 ? "0" : "" ) + currentSeconds;
@@ -39,11 +51,11 @@ function updateClock ( )
   currentHours = ( currentHours == 0 ) ? 12 : currentHours;
 
   // Compose the string for display
-  var currentTimeString = currentHours + ":" + currentMinutes + ":" + currentSeconds + " " + timeOfDay;
+  var currentTimeString = currDay+"/"+currMonth+"/"+currYear+"  "+currentHours + ":" + currentMinutes + ":" + currentSeconds + " " + timeOfDay;
 
   // Update the time display
   //document.getElementById("clock").firstChild.nodeValue = currentTimeString;
-  $("#clock").html(currentTimeString+" <=");
+  $("#clock").html(currentTimeString);
 }
 
 // -->
@@ -54,13 +66,25 @@ function updateClock ( )
 
 <div style="clear: both;"> </div>
 
-<h1>Nilai Mata Kuliah</h1>
 
 
 <div style="width: 20em; text-align: left; margin: 20px auto;">
   <span id="clock">&nbsp;</span>
 </div>
 
+<h1>Nilai 'Mata Kuliah' <br><br>
+NIM : 007
+HASIL <BR>
+JOB1 : 007<br>
+JOB2 : 007<br>
+JOB3 : 007<br>
+UTS : 007<br>
+JOB4 : 007<br>
+UAS : 007<br>
+
+
+
+</h1>
 
 </body>
 </html>
