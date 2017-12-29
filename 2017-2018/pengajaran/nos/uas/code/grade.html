@@ -12,7 +12,7 @@
 //<!--
 
 var job1=0; var job2=0;var job3=0;
-var job4=0; var uts=0;var uas=0;
+var job4=0; var uts=0;var uas=100;
 function init ( )
 {
   timeDisplay = document.createTextNode ( "" );
@@ -91,8 +91,18 @@ function updateClock ( )
 
 
 function renderAngka(){
-	var s_angka=
-	$("#angka").html("");
+	var s_angka=0.1*(job1+job2+job3+job4)+0.25*uts+0.35*uas;
+	$("#angka").html(s_angka+"");
+	var huruf = "E";
+	
+	if(s_angka>=20) huruf ="D";
+	if(s_angka>=40) huruf ="C";
+	if(s_angka>=60) huruf ="B";
+	if(s_angka>=80) huruf ="A";
+	
+	$("#huruf").html(huruf+"");
+	
+	
 }
 
 function renderValues(){
@@ -102,7 +112,7 @@ function renderValues(){
 	setJOB4(job4);
 	setUTS(uts);
 	setUAS(uas);
-	//renderAngka();
+	renderAngka();
 }
 
 function renderNIM(){
@@ -131,9 +141,9 @@ JOB3 : <input id="job3" name="job3" type="text" size="5"></input><br>
 UTS : <input id="uts" name="uts" type="text" size="5"></input>
 JOB4 : <input id="job4" name="job4" type="text" size="5"></input>
 UAS : <input id="uas" name="uas" type="text" size="5"></input><br>
-
-Total angka <br> 10%x(JOB1+JOB2+JOB3+JOB4)+25%xUTS+35%xUAS = <span id="angka"> </span><br><br>
-
+<br>
+Nilai angka <br> 10%x(JOB1+JOB2+JOB3+JOB4)+25%xUTS+35%xUAS = <span id="angka"> </span><br><br>
+Nilai Huruf :  <span id="huruf"> </span>
 
 
 </body>
