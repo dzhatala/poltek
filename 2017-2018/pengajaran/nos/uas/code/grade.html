@@ -149,7 +149,7 @@ function renderNIM(){
   <span id="clock">&nbsp;</span>
 </div>
 
-<h1>Nilai 'Mata Kuliah' </h1>
+<h3>Nilai 'Mata Kuliah' </h3>
 NIM : <span id="nim"> </span><br><br>
 JOB1 : <input id="job1" name="job1" type="text" size="5"></input>
 JOB2 : <input id="job2" name="job2" type="text" size="5"></input>
@@ -159,28 +159,121 @@ JOB4 : <input id="job4" name="job4" type="text" size="5"></input>
 UAS : <input id="uas" name="uas" type="text" size="5"></input><br>
 <br>
 Nilai angka <br> 10%x(JOB1+JOB2+JOB3+JOB4)+25%xUTS+35%xUAS = <span id="angka"> </span><br><br>
-<h3>
+<h2>
 Nilai Huruf :  <span id="huruf"> </span>
-</h3>
+</h2>
 
 <span id="keterangan"> </span>
 
 
 
 <script type="text/javascript">
- $("#job1").change(function(){
-	
-	//alert ("job1 change");
+function checkValues(){
 	var num_val=parseInt($("#job1").val());
 	if(num_val<0|num_val>100) {
-		 $("#job1").focus();
-		alert ("Nilai antara 0 - 100");
-		return ;
+		alert ("Nilai job1 antara 0 - 100");
+		$("#job1").focus();
+		return false;
+	} 
+	else {
+		setJOB1(num_val);
+		//renderValues();
 	}
-	setJOB1(num_val);
-	renderValues();
+	
+	num_val=parseInt($("#job2").val());
+	if(num_val<0|num_val>100) {
+		alert ("Nilai job2 antara 0 - 100");
+		$("#job2").focus();
+		return false;
+	}
+	else {
+		setJOB2(num_val);
+		//renderValues();
+	}
+	
+	num_val=parseInt($("#job3").val());
+	if(num_val<0|num_val>100) {
+		alert ("Nilai job3 antara 0 - 100");
+		$("#job3").focus();
+		return false;
+	}
+		else {
+		setJOB3(num_val);
+		//renderValues();
+	}
+
+	num_val=parseInt($("#job4").val());
+	if(num_val<0|num_val>100) {
+		alert ("Nilai job4 antara 0 - 100");
+		$("#job4").focus();
+		return false;
+	}
+		else {
+		setJOB4(num_val);
+		//renderValues();
+	}
+
+	num_val=parseInt($("#uts").val());
+	if(num_val<0|num_val>100) {
+		alert ("Nilai UTS antara 0 - 100");
+		$("#uts").focus();
+		return false;
+	}
+		else {
+		setUTS(num_val);
+		//renderValues();
+	}
+
+	num_val=parseInt($("#uas").val());
+	if(num_val<0|num_val>100) {
+		alert ("Nilai UAS antara 0 - 100");
+		$("#uas").focus();
+		return false;
+	}
+		else {
+		setUAS(num_val);
+		//renderValues();
+	}
+	return true;
+}
+
+ $("#job1").change(function(){
+	if(checkValues())renderValues();
+	
  });
 
+ $("#job2").change(function(){
+	if(checkValues())renderValues();
+	
+ });
+ 
+ $("#job3").change(function(){
+	
+	if(checkValues())renderValues();
+	
+ });
+
+  $("#job4").change(function(){
+	
+	if(checkValues())renderValues();
+	
+ });
+
+
+   $("#uts").change(function(){
+	
+	if(checkValues())renderValues();
+	
+ });
+
+  $("#uas").change(function(){
+	
+	if(checkValues())renderValues();
+	
+ });
+
+
+ 
 </script>
 
 </body>
