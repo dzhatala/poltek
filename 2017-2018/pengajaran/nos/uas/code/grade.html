@@ -13,6 +13,12 @@
 
 var job1=0; var job2=0;var job3=0;
 var job4=0; var uts=0;var uas=100;
+
+//php loading here, get values from servers
+
+//backup values here
+var job1_ori=job1;
+
 function init ( )
 {
   timeDisplay = document.createTextNode ( "" );
@@ -100,7 +106,13 @@ function renderAngka(){
 	if(s_angka>=60) huruf ="B";
 	if(s_angka>=80) huruf ="A";
 	
-	$("#huruf").html(huruf+"");
+	var r_01="";
+	var r_color="red";
+	if(s_angka>40) r_color="green";
+	r_01 +="<font color =\""+r_color+"\">";
+	r_01 +=huruf+"  ("+s_angka+")";	
+	r_01 +="</font>";
+	$("#huruf").html(r_01);
 	
 	
 }
@@ -119,6 +131,10 @@ function renderNIM(){
  $("#nim").html("007");
  
 }
+
+
+
+
 // -->
 </script>
 
@@ -143,8 +159,29 @@ JOB4 : <input id="job4" name="job4" type="text" size="5"></input>
 UAS : <input id="uas" name="uas" type="text" size="5"></input><br>
 <br>
 Nilai angka <br> 10%x(JOB1+JOB2+JOB3+JOB4)+25%xUTS+35%xUAS = <span id="angka"> </span><br><br>
+<h3>
 Nilai Huruf :  <span id="huruf"> </span>
+</h3>
 
+<span id="keterangan"> </span>
+
+
+
+<script type="text/javascript">
+ $("#job1").change(function(){
+	
+	//alert ("job1 change");
+	var num_val=parseInt($("#job1").val());
+	if(num_val<0|num_val>100) {
+		 $("#job1").focus();
+		alert ("Nilai antara 0 - 100");
+		return ;
+	}
+	setJOB1(num_val);
+	renderValues();
+ });
+
+</script>
 
 </body>
 </html>
